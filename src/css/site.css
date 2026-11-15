@@ -834,10 +834,3 @@ html.has-lenis{scroll-snap-type:none}
 /* masked line reveals: SplitText wraps each line in a clipping mask */
 .split-mask{overflow:clip;padding-bottom:.06em;margin-bottom:-.06em}
 .split-line{display:block}
-
-/* ---------- hero portrait (WebGL: depth parallax + fluid colour reveal; the img is the static fallback) ---------- */
-.hero-portrait{position:absolute;inset:0;overflow:hidden;background:#000}
-.hero-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% 50%;filter:grayscale(1) brightness(.8) contrast(1.12)}
-.hero-portrait canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity var(--d-slow) var(--ease)}
-.hero-portrait canvas.on{opacity:1}
-.hero-portrait::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(10,10,10,.92),rgba(10,10,10,.15) 55%,rgba(10,10,10,.45))}
