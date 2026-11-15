@@ -16,11 +16,12 @@ src = open(os.path.join(SRC, 'index.html'), encoding='utf-8').read()
 EMAIL = re.search(r'mailto:([^"?&]+)', src).group(1)
 
 # ---- project data, read straight from the page ----
-a = src.index('var P = [') + 8
-b = src.index('\n  ];', a) + 4
+js_src = open(os.path.join(SRC, 'js', 'site.js'), encoding='utf-8').read()
+a = js_src.index('var P = [') + 8
+b = js_src.index('\n  ];', a) + 4
 import subprocess
 P = json.loads(subprocess.run(['node', '-e', 'process.stdout.write(JSON.stringify(eval("("+require("fs").readFileSync(0,"utf8")+")")))'],
-                              input=src[a:b].strip().rstrip(';'), capture_output=True, text=True, check=True).stdout)
+                              input=js_src[a:b].strip().rstrip(';'), capture_output=True, text=True, check=True).stdout)
 
 # ---- strip the artifact-only head bits and wrap as a real document ----
 head_end = src.index('<div class="loader"')
@@ -31,9 +32,7 @@ head = re.sub(r'<meta name="description"[^>]*>\n', '', head)
 head = re.sub(r'<meta (property|name)="(og|twitter):[^"]*"[^>]*>\n', '', head)
 
 # a case page opens its project on load
-body = body.replace(
-    "  var h = (location.hash||'').slice(1);",
-    "  var h = window.__OPEN || (location.hash||'').slice(1);")
+# (site.js already reads window.__OPEN)
 
 def esc(s): return html.escape(s, quote=True)
 
