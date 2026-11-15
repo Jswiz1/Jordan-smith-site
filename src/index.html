@@ -90,9 +90,18 @@
 
       <figure class="sys-mock" aria-label="CRM screens on a laptop">
         <img src="media/mock-crm-1-sm.jpg" srcset="media/mock-crm-1-sm.jpg 1000w, media/mock-crm-1.jpg 2000w" sizes="100vw" width="1000" height="500" alt="The Don CRM home screen on a laptop" data-cap="The Don CRM" class="on"><img src="media/mock-crm-2-sm.jpg" srcset="media/mock-crm-2-sm.jpg 1000w, media/mock-crm-2.jpg 2000w" sizes="100vw" width="1000" height="500" loading="lazy" alt="Seven Studios CRM home screen on a laptop" data-cap="Seven Studios CRM"><img src="media/mock-crm-3-sm.jpg" srcset="media/mock-crm-3-sm.jpg 1000w, media/mock-crm-3.jpg 2000w" sizes="100vw" width="1000" height="500" loading="lazy" alt="Seven Studios CRM dashboard with KPIs on a laptop" data-cap="Seven Studios dashboard">
+        <button type="button" class="sys-mock-btn" data-open-crm data-cursor="Open"><span>Look inside the CRMs</span><span aria-hidden="true">→</span></button>
         <figcaption class="mono"><span id="sysMockCap">The Don CRM</span><span class="sys-mock-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span></figcaption>
       </figure>
 
+    </div>
+
+    <div class="crm-modal" id="crmModal" role="dialog" aria-modal="true" aria-labelledby="crmModalTitle" data-lenis-prevent hidden>
+      <div class="wrap">
+        <div class="crm-modal-head">
+          <span class="mono" id="crmModalTitle">Inside the CRMs</span>
+          <button type="button" class="crm-modal-x mono" data-close-crm>Close</button>
+        </div>
       <div class="sys-tabs" role="tablist" aria-label="CRM examples">
         <button type="button" role="tab" id="tabDon" aria-selected="true" aria-controls="crmDon" data-note="The real build · example data">The Don CRM</button>
         <button type="button" role="tab" id="tabSeven" aria-selected="false" aria-controls="crmSeven" data-note="The real build · example data">Seven Studios CRM</button>
@@ -167,6 +176,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
