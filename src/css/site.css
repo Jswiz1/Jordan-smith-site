@@ -842,3 +842,6 @@ html.has-lenis{scroll-snap-type:none}
 .stage.gl{cursor:grab;touch-action:pan-y}
 .stage.gl.dragging{cursor:grabbing}
 .flip.flip-img{background-size:cover;background-position:center;border:0;transition:none}
+
+/* WhatsApp: same pill as Copy email, with its icon */
+.copy.wa{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:inherit}
