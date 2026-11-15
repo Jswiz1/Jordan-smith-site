@@ -37,7 +37,7 @@
     velDiss: 0.4, dyeDiss: 1.6,    // how quickly motion and colour fade
     radius: phone ? 0.006 : 0.0032,
     force: 5200,
-    depth: phone ? 0.02 : 0.032,    // parallax strength
+    depth: phone ? 0.008 : 0.012,  // parallax strength (kept low so the face never warps)
     dpr: Math.min(window.devicePixelRatio || 1, phone ? 1.25 : 1.5)
   };
 
@@ -129,11 +129,10 @@
       ' vec2 uv = (vUv - .5) * uScale + uFocus;' +
       ' float d = texture2D(uDepth, uv).r;' +
       ' uv += uOffset * (d - .5) * uDepthAmt;' +                       // nearer pixels move further: depth parallax
-      ' uv += texture2D(uVel, vUv).xy * .00003;' +                     // the fluid gently bends the image
       ' vec3 c = texture2D(uPhoto, uv).rgb;' +
       ' float l = dot(c, vec3(.299, .587, .114)); float g = clamp((l - .5) * 1.12 + .5, 0., 1.) * .8;' + // matches the fallback img grade
-      ' float m = smoothstep(.0, .4, texture2D(uDye, vUv).r) * uReady;' +
-      ' vec3 col = mix(vec3(g), clamp(c * (g / max(l, .002)), 0., 1.), m);' +   // colour arrives at the same brightness, so only the saturation changes
+      ' float m = (1. - exp(-texture2D(uDye, vUv).r * 2.2)) * uReady;' +
+      ' vec3 col = vec3(g) + (c - vec3(l)) * .7 * m;' +                  // add the photo's own colour on top of the grade: same brightness, natural tones
       ' gl_FragColor = vec4(col, 1.); }'
   };
 
