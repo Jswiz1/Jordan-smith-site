@@ -175,7 +175,7 @@
 
   /* ---------- marquee ---------- */
   var track = document.getElementById('track');
-  var mq = P.map(function(p){ return esc(p.title); }).concat(['Oxen Sports','St Leger']);
+  var mq = ['Websites', 'AI automation', 'Custom CRMs', 'Workflows', 'Video production', 'Seven Studios', 'Scene', 'The Don', 'Don Card'];
   var unit = mq.map(function(t){ return '<span>'+t+'<i class="sep" aria-hidden="true"></i></span>'; }).join('');
   track.innerHTML = unit + unit + unit;
   var mqX = 0, vel = 0, lastY = window.scrollY, dir = 1;
@@ -412,6 +412,13 @@
     if (i === Math.round(pos)) openCase(P[i].id, c); else scrollToCard(i);
   });
   document.getElementById('openCase').addEventListener('click', function(){ var i = Math.round(pos); openCase(P[i].id, cards[i], window.WorkGL && WorkGL.rect(i)); });
+  // brand tiles open the matching case study
+  [].forEach.call(document.querySelectorAll('.brand-tile[data-case]'), function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-case');
+      for (var q = 0; q < P.length; q++) if (P[q].id === id) { openCase(id, btn.querySelector('.bt-img') || btn); return; }
+    });
+  });
   // read by work-gl.js, which draws the cards in WebGL on top of this same layout
   window.WorkCarousel = {
     state: function(){ return { pos: pos, target: target, W: W, R: R, STEP: STEP, n: P.length, persp: parseFloat(stage.style.perspective) || 1000 }; },

@@ -863,3 +863,26 @@ html.has-lenis{scroll-snap-type:none}
 .reel.moved .reel-cue{opacity:0}
 .reel-pin::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(10,10,10,.55),rgba(10,10,10,0) 30%,rgba(10,10,10,0) 70%,rgba(10,10,10,.55))}
 @media (prefers-reduced-motion:reduce){ .reel-rec{animation:none} }
+
+/* ---------- AI automation ---------- */
+.ai-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(36px,5vw,64px)}
+.ai-card{display:flex;flex-direction:column;gap:14px;padding:28px;border:1px solid var(--line-dark);border-radius:18px;color:inherit;text-decoration:none;background:#0F0F10;transition:border-color var(--d-quick) var(--ease),transform var(--d-base) var(--ease)}
+.ai-card:hover{border-color:var(--white);transform:translateY(-4px)}
+.ai-card:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+.ai-tag{color:var(--grey-on-black);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.ai-card h3{font-family:var(--display);font-weight:600;letter-spacing:-.03em;font-size:clamp(26px,2.4vw,34px);line-height:1.05;margin:0}
+.ai-card p{margin:0;color:#cfcfcf;font-size:16px;line-height:1.5;flex:1}
+.ai-go{font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.ai-next{display:flex;gap:16px;align-items:baseline;margin-top:28px;color:var(--grey-on-black);font-size:13px;letter-spacing:.02em}
+.ai-next span{color:var(--white);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+/* ---------- brands I've built ---------- */
+.brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(36px,5vw,64px)}
+.brand-tile{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;cursor:pointer}
+.brand-tile:focus-visible{outline:2px solid currentColor;outline-offset:6px}
+.bt-img{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#ddd}
+.bt-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transform:scale(1.02);transition:filter var(--d-base) var(--ease),transform var(--d-slow) var(--ease)}
+.brand-tile:hover .bt-img img,.brand-tile:focus-visible .bt-img img{filter:grayscale(0);transform:scale(1.06)}
+.bt-meta{display:flex;flex-direction:column;gap:4px}
+.bt-meta b{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:22px}
+.bt-meta span{color:var(--grey-on-white);font-size:14px}
+@media (max-width:900px){ .ai-grid{grid-template-columns:minmax(0,1fr)} .brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }

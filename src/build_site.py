@@ -40,7 +40,7 @@ def meta_block(title, desc, path, image='og.jpg', extra_ld=None):
     url = DOMAIN + path
     ld = [{
         '@context': 'https://schema.org', '@type': 'Person', 'name': 'Jordan Smith',
-        'jobTitle': 'Co-founder & Creative Director', 'url': DOMAIN + '/', 'email': 'mailto:' + EMAIL,
+        'jobTitle': 'Marketer, web developer and video producer', 'url': DOMAIN + '/', 'email': 'mailto:' + EMAIL,
         'image': DOMAIN + '/portrait.jpg',
         'address': {'@type': 'PostalAddress', 'addressLocality': 'Doncaster', 'addressCountry': 'GB'},
         'worksFor': [
@@ -48,8 +48,8 @@ def meta_block(title, desc, path, image='og.jpg', extra_ld=None):
             {'@type': 'Organization', 'name': 'Scene', 'url': 'https://drinkscene.co.uk'},
             {'@type': 'Organization', 'name': 'The Don', 'url': 'https://wearethedon.co.uk'},
             {'@type': 'Organization', 'name': 'Don Card', 'url': 'https://doncard.co.uk'}],
-        'knowsAbout': ['Marketing strategy', 'Content', 'Video production', 'Web design',
-                       'AI automation', 'CRM systems', 'Project management', 'Brand identity']}]
+        'knowsAbout': ['Web development', 'AI automation', 'CRM systems', 'Video production', 'Marketing strategy', 'Content',
+                       'Project management', 'Brand identity']}]
     if extra_ld: ld.append(extra_ld)
     return (
         '<!doctype html>\n<html lang="en-GB">\n<head>\n<meta charset="utf-8">\n'
@@ -72,8 +72,8 @@ def meta_block(title, desc, path, image='og.jpg', extra_ld=None):
         '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
         + ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld))
 
-HOME_TITLE = 'Jordan Smith · Marketing consultant & creative director, Doncaster'
-HOME_DESC = ('Marketing consultancy, video production, websites, custom CRMs and AI automation from Doncaster. '
+HOME_TITLE = 'Jordan Smith · Marketer: web, AI and video production, Doncaster'
+HOME_DESC = ('A marketer who builds: websites, AI automation, custom CRMs and video production from Doncaster. '
              'Co-founder of Seven Studios, Scene, The Don and Don Card.')
 service = {
     '@context': 'https://schema.org', '@type': 'ProfessionalService', 'name': 'Jordan Smith · Marketing consultancy',
