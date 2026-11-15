@@ -886,3 +886,12 @@ html.has-lenis{scroll-snap-type:none}
 .bt-meta b{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:22px}
 .bt-meta span{color:var(--grey-on-white);font-size:14px}
 @media (max-width:900px){ .ai-grid{grid-template-columns:minmax(0,1fr)} .brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+/* laptop mockups */
+.sys-mocks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:56px 0 48px}
+.sys-mocks figure{margin:0;position:relative;overflow:hidden;border-radius:6px;background:#dcdbd8}
+.sys-mocks img{display:block;width:100%;height:auto;aspect-ratio:16/11;object-fit:cover;object-position:50% 20%;transition:transform var(--d-slow) var(--ease)}
+.sys-mocks figure:hover img{transform:scale(1.03)}
+.sys-mocks figcaption{position:absolute;left:18px;top:16px;color:#111;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:760px){.sys-mocks{grid-template-columns:1fr;gap:12px;margin:40px 0 32px}}
+@media (prefers-reduced-motion:reduce){.sys-mocks img{transition:none}.sys-mocks figure:hover img{transform:none}}
