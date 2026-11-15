@@ -8,9 +8,9 @@
     else window.scrollTo({ top: y, behavior: (rm || o.immediate) ? 'auto' : 'smooth' });
   };
   var P = [
-    { id:'seven', title:'Seven Studios', client:'Co-founder', meta:'Studio + operating system',
+    { id:'seven', title:'Seven Studios', client:'My own business', meta:'Studio + operating system',
       line:'A production studio, built from the ground up.', type:'Production studio',
-      role:'Co-founder', where:'Doncaster',
+      role:'Web development · Strategy · AI systems · CRM · Video producer · Creative director', where:'Doncaster',
       brief:'Commercial video, podcasts and social content, from UGC-style ads to multi-camera brand films. Running it meant fixing the admin as well as the output.',
       img:'seven-studios.jpg', caption:'The studio, Doncaster',
       site:'https://sevenstudios.co.uk', siteLabel:'sevenstudios.co.uk', crm:'tabSeven',
@@ -24,7 +24,7 @@
       result:'Swapped a £200+ a month off-the-shelf system for a CRM built around how we work.' },
     { id:'scene', title:'Scene', client:'Co-founder', meta:'Coffee · third venue soon',
       line:'Be seen. Feel seen. Drink Scene.', type:'Hospitality brand',
-      role:'Co-founder · name, identity, marketing', where:'Doncaster city centre · Auckley',
+      role:'Web · AI · Barista personal brand strategy · Branding · Creative director', where:'Doncaster city centre · Auckley',
       brief:"An independent coffee brand with a personality, run with an operator's view of margins, staffing and opening new sites.",
       img:'scene.jpg', imgTitle:true, caption:'Drink Scene: the brand in one frame',
       site:'https://drinkscene.co.uk', siteLabel:'drinkscene.co.uk', crm:'tabScene',
@@ -40,15 +40,15 @@
       result:'50,000 followers since launching in late 2025.' },
     { id:'doncard', title:'Don Card', client:'Co-founder', meta:'Product · 90+ venues',
       line:'An audience, turned into a product.', type:'Digital membership',
-      role:'Co-founder · concept, brand, product, launch', where:'doncard.co.uk',
+      role:'Creative director · Web · CRM · Design · Branding', where:'doncard.co.uk',
       brief:'The Don had an audience that cared about local businesses. Don Card gives members a reason to visit, and venues a reason to join.',
       did:['Designed the membership: pricing, subscriptions and payments on Shopify.','Digital wallet cards with QR verification at the till.','Merchant onboarding and a business directory.'],
       img:'don-card.jpg', caption:'The membership lives in Apple and Google Wallet',
       site:'https://doncard.co.uk', siteLabel:'doncard.co.uk', crm:'tabDon',
       result:'90+ venues and 300+ members signed up.' },
-    { id:'jonny', title:'Jonny from Donny', client:'Marketing lead', meta:'Films · £4m in a year',
+    { id:'jonny', title:'Jonny from Donny', client:'Marketing lead · Video producer', meta:'Films · £4m in a year',
       line:'Advertising that plays like entertainment.', type:'Films and trailers',
-      role:'Marketing lead', where:'Switzerland · Lake Como · Italy · Liverpool',
+      role:'Marketing lead · Video producer', where:'Switzerland · Lake Como · Italy · Liverpool',
       brief:'Donny Competitions gives away supercars and cash. Competition ads tend to look the same, with product, price and a countdown. Here the prizes star in their own travel series instead, published on the Jonny From Donny channel.',
       did:['A cinematic, British-gangster-style trailer with a full cast, a country-house library set, luxury cars and watches. Over 2 million views.','Films shot on location across Switzerland, Italy and Liverpool.','In Italy, the prize line-up, including a Ferrari SF90 Stradale and a Porsche 911 GT3 RS, takes on Lake Como, Milan and the Stelvio Pass.','In Liverpool, four Porsche 911 GT3 RS Weissach cars, each the top prize in a live draw.','At home, a comedy sketch starring John Fury.'],
       img:'terry-2.jpg',
@@ -465,7 +465,7 @@
         (p.site ? '<a class="case-link" href="'+p.site+'" target="_blank" rel="noopener" data-cursor="Visit"><span>View website</span><span class="mono">'+esc(p.siteLabel)+' ↗</span></a>' : '') +
         (p.crm ? '<button type="button" class="case-link" data-crm-link="'+p.crm+'" data-cursor="Open"><span>See the CRM</span><span class="mono">The real build →</span></button>' : '') +
         '</div>' : '') +
-      '<div class="facts"><div><span class="mono">Type</span>'+esc(p.type)+'</div><div><span class="mono">Role</span>'+esc(p.role)+'</div><div><span class="mono">Where</span>'+esc(p.where)+'</div></div>' +
+      '<div class="facts"><div><span class="mono">Type</span>'+esc(p.type)+'</div><div><span class="mono">Role</span>'+esc(p.role).split(' · ').join('<br>')+'</div><div><span class="mono">Where</span>'+esc(p.where)+'</div></div>' +
       '<div class="cols"><div><span class="mono">The situation</span><p>'+esc(p.brief)+'</p></div><div><span class="mono">What I did</span><ul class="did">'+p.did.map(function(d){return '<li>'+esc(d)+'</li>';}).join('')+'</ul></div></div>' +
       (p.videos ? '<div class="case-videos"><div class="eyebrow mono"><span>Video projects</span><span>'+pad(p.videos.length)+'</span></div><div class="coll">' + p.videos.map(function(c, j){
           return tileHTML(c, j);
