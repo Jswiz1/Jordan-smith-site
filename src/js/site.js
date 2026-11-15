@@ -20,7 +20,7 @@
         {k:'OXEN Sports', t:'Engineered to Inspire', d:'Hosting the podcast for a global sports brand, sitting down with its founders and athletes, including Kevin Sinfield.', s:'Host \u00b7 podcast \u00b7 watch on YouTube \u2197', img:'oxen.jpg', wide:true, url:'https://www.youtube.com/watch?v=pHBksblVFz4'},
         {k:'Pristine Clean', t:'Commercial content', d:'Social and brand content for a commercial cleaning company.', s:'Ongoing'}
       ],
-      did:['Co-founded the studio and built it from the ground up with my business partner.','Led the brand, design and marketing.','Designed and built the website, with online booking and payments.','Set up the booking and marketing systems, so a paid booking lands straight on the production board.','Built the studio’s own CRM: leads, podcasts, video, retainers and KPIs in one place, with Claude working inside it.','Video production, from podcasts to full brand films.'],
+      did:['Co-founded the studio and built it from the ground up with my business partner.','Led the brand, design and marketing.','Designed and built the website, with online booking and payments.','Set up the booking and marketing systems, so a paid booking lands straight on the production board.','Built the studio’s own CRM: leads, podcasts, video, retainers and KPIs in one place, with AI working inside it.','Video production, from podcasts to full brand films.'],
       result:'Swapped a £200+ a month off-the-shelf system for a CRM built around how we work.' },
     { id:'scene', title:'Scene', client:'Co-founder', meta:'Coffee · third venue soon',
       line:'Be seen. Feel seen. Drink Scene.', type:'Hospitality brand',
@@ -73,7 +73,7 @@
         {k:'Pristine Clean', t:'Commercial content', d:'Social and brand content for a commercial cleaning company.', s:'Ongoing'},
         {k:'Paul Gascoigne', t:'Clothing brand content', d:'Content for Paul Gascoigne\u2019s clothing brand, including Gazza on stage in front of a packed crowd of England fans.', s:'Brand \u00b7 event \u00b7 social', img:'gazza.jpg'},
         {k:'Websites', t:'Don Card', d:'A membership site on Shopify. Browse 100+ local deals, join for \u00a329 a year, and the card lands straight in Apple or Google Wallet.', s:'doncard.co.uk \u2197', img:'web-doncard.jpg', wide:true, shot:true, url:'https://doncard.co.uk', noplay:true},
-        {k:'Custom CRMs', t:'Built around the team', d:'Bespoke CRMs for Seven Studios, The Don and Scene, with Claude working inside them. One replaced a \u00a3200+ a month system.', s:'See the real builds \u2192', img:'crm/seven-home-dark.jpg', crm:'tabSeven', wide:true, shot:true}
+        {k:'Custom CRMs', t:'Built around the team', d:'Bespoke CRMs for Seven Studios, The Don and Scene, with AI working inside them. One replaced a \u00a3200+ a month system.', s:'See the real builds \u2192', img:'crm/seven-home-dark.jpg', crm:'tabSeven', wide:true, shot:true}
       ] }
   ];
   var pad = function(n){ return (n<10?'0':'')+n; };
@@ -258,15 +258,15 @@
     var CRMS = {
       don: { title:'The Don CRM', phone:'crm/don-mobile-dark.jpg', shots:[
         ['don-home-dark','Home','Today at a glance: streaks, the next event, the next paid job and emails to sort.'],
-        ['don-inbox-dark','Inbox','Claude reads each email, says what to do and drafts the reply.'],
+        ['don-inbox-dark','Inbox','AI reads each email, says what to do and drafts the reply.'],
         ['don-leads-dark','Leads','Every lead from first message to won, with chase dates that go red when late.'],
         ['don-sponsors-dark','Sponsors','Sponsors from pitch to live, with warnings before a deal runs out.'],
         ['don-card-home-dark','Don Card','The card business: retailers, members and cards sold, synced from Shopify.'],
-        ['don-braindump-dark','Brain dump','Say what happened. Claude updates the CRM within the hour.'],
-        ['don-todo-dark','To-do','Everyone’s to-dos, plus tasks Claude suggests.']],
-        feats:[['Brain dump','talk or type, and Claude files it'],['Email triage','summaries, next steps and drafted replies'],['Two businesses, one system','The Don and Don Card, access set per person'],['Sponsor renewals','flagged before they run out'],['Shopify sync','members and retailers update themselves'],['Claude writes','lead proposals and filming scripts'],['Live for everyone','every change shows instantly, with full history'],['Team streaks','a daily habit, not another chore']] },
+        ['don-braindump-dark','Brain dump','Say what happened. The CRM updates itself within the hour.'],
+        ['don-todo-dark','To-do','Everyone’s to-dos, plus tasks the AI suggests.']],
+        feats:[['Brain dump','talk or type, and AI files it'],['Email triage','summaries, next steps and drafted replies'],['Two businesses, one system','The Don and Don Card, access set per person'],['Sponsor renewals','flagged before they run out'],['Shopify sync','members and retailers update themselves'],['AI writes','lead proposals and filming scripts'],['Live for everyone','every change shows instantly, with full history'],['Team streaks','a daily habit, not another chore']] },
       seven: { title:'Seven Studios Board', phone:'crm/seven-mobile-dark.jpg', shots:[
-        ['seven-home-dark','Home','The day ahead: calendar, the next shoot countdown, and what Claude suggests.'],
+        ['seven-home-dark','Home','The day ahead: calendar, the next shoot countdown, and what the AI suggests.'],
         ['seven-dashboard-dark','KPIs','Weekly wins and KPIs that track themselves.'],
         ['seven-leads-dark','Leads','The pipeline with values per stage, chase flags and quotes started in Xero.'],
         ['seven-podcasts-dark','Podcasts','Bookings synced from Acuity, through recording, edit and delivery.'],
@@ -274,7 +274,7 @@
         ['seven-retainer-profile-dark','Client profile','Brand colours, fonts, files and contacts for every client.'],
         ['seven-ideas-dark','Ideas','The team pitches ideas and rates them 1 to 10.'],
         ['seven-quiz-dark','Quiz','A daily quiz with a monthly champion. Small things keep a team using it.']],
-        feats:[['Brain dump','talk or type, and Claude files it'],['Claude drafts','proposals and follow-ups, straight into Outlook'],['Production boards','podcast, video and retainers, each with checklists'],['Xero built in','paid and due status, quotes started in one click'],['Acuity sync','bookings land on the board automatically'],['Self-tracking KPIs','leads, sessions, videos and money in'],['Team culture','streaks, a daily quiz and an ideas wall'],['Live for everyone','every change shows instantly, with full history']] }
+        feats:[['Brain dump','talk or type, and AI files it'],['AI drafts','proposals and follow-ups, straight into Outlook'],['Production boards','podcast, video and retainers, each with checklists'],['Xero built in','paid and due status, quotes started in one click'],['Acuity sync','bookings land on the board automatically'],['Self-tracking KPIs','leads, sessions, videos and money in'],['Team culture','streaks, a daily quiz and an ideas wall'],['Live for everyone','every change shows instantly, with full history']] }
     };
     [].slice.call(document.querySelectorAll('.pl[data-crm]')).forEach(function(pl){
       var c = CRMS[pl.dataset.crm], panel = pl.closest('[role="tabpanel"]');
@@ -1215,3 +1215,16 @@
   var h = window.__OPEN || (location.hash||'').slice(1);
   for (var k=0;k<P.length;k++) if (P[k].id === h) { openCase(h); break; }
 })();
+
+/* Systems laptop mockup: cycle CRM screens while on screen */
+(function(){
+  var fig=document.querySelector('.sys-mock'); if(!fig) return;
+  var imgs=fig.querySelectorAll('img'), dots=fig.querySelectorAll('.sys-mock-dots i'), cap=document.getElementById('sysMockCap');
+  var i=0, t=null, rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n){ imgs[i].classList.remove('on'); dots[i].classList.remove('on'); i=n; imgs[i].classList.add('on'); dots[i].classList.add('on'); cap.textContent=imgs[i].getAttribute('data-cap'); }
+  function start(){ if(!t && !rm) t=setInterval(function(){ show((i+1)%imgs.length); },3800); }
+  function stop(){ clearInterval(t); t=null; }
+  if('IntersectionObserver' in window) new IntersectionObserver(function(e){ e[0].isIntersecting?start():stop(); }).observe(fig); else start();
+  fig.addEventListener('click',function(){ show((i+1)%imgs.length); });
+})();
+
