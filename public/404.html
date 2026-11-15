@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Not found · Jordan Smith</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=Instrument+Serif:ital@1&family=Geist+Mono:wght@400&display=swap">
+<style>
+  :root{--black:#0A0A0A;--white:#FAFAFA;--grey:#8E8E8E;--ease:cubic-bezier(.19,1,.22,1);
+    --display:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter Tight','Helvetica Neue',Arial,sans-serif;
+    --accent:'Instrument Serif',Georgia,serif;--mono:'Geist Mono',ui-monospace,Menlo,monospace}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--black);color:var(--white)}
+  body{font-family:var(--display);-webkit-font-smoothing:antialiased;overflow:hidden}
+  canvas{position:fixed;inset:0;width:100%;height:100%;display:block}
+  /* CSS grain if WebGL isn't available */
+  .nogl body,.nogl{background:var(--black) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  main{position:relative;z-index:1;min-height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,4vw,48px)}
+  header,footer{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,250,.7)}
+  header a{color:var(--white);text-decoration:none;font-family:var(--display);text-transform:none;letter-spacing:-.01em;font-size:15px}
+  h1{font-size:clamp(84px,19vw,300px);line-height:.85;letter-spacing:-.05em;margin:0;font-weight:600}
+  h1 em{font-family:var(--accent);font-weight:400;letter-spacing:-.02em}
+  p{font-size:clamp(18px,2vw,24px);line-height:1.4;max-width:30ch;margin:22px 0 32px;color:rgba(250,250,250,.86)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .3s var(--ease),color .3s var(--ease)}
+  .btn.solid{background:var(--white);color:var(--black)}
+  .btn.line{border:1px solid rgba(250,250,250,.6);color:var(--white)}
+  .btn.line:hover{background:var(--white);color:var(--black)}
+  a:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+  .tc{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<canvas id="static" aria-hidden="true"></canvas>
+<main>
+  <header><a href="/">Jordan Smith</a><span><span class="tc" id="tc">00:00:00:00</span> · No signal</span></header>
+  <div>
+    <h1>404<em>.</em></h1>
+    <p>This page didn't make the final cut. Everything else is still on the reel.</p>
+    <div class="actions">
+      <a class="btn solid" href="/">Back to the homepage</a>
+      <a class="btn line" href="/work/">See the work</a>
+    </div>
+  </div>
+  <footer><span>Doncaster, UK</span><span>Error 404 · Page not found</span></footer>
+</main>
+<script>
+/* A small "lost signal" shader: monochrome analogue static, a slow rolling bar and the odd line tear.
+   The cursor clears a soft patch of picture. Reduced motion: one still frame. No WebGL: CSS grain. */
+(function () {
+  var cv = document.getElementById('static'), tc = document.getElementById('tc');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = cv.getContext('webgl', { antialias: false, alpha: false });
+  if (!gl) { document.documentElement.classList.add('nogl'); cv.remove(); return; }
+  var vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var fs = [
+    'precision mediump float;uniform vec2 r,m;uniform float t;',
+    'float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}',
+    'void main(){vec2 uv=gl_FragCoord.xy/r;',
+    ' float tear=step(.985,h(vec2(floor(uv.y*60.),floor(t*8.))))*.04;',            // the odd horizontal tear
+    ' vec2 q=vec2(uv.x+tear,uv.y);',
+    ' float n=h(floor(q*r/2.)+floor(t*24.));',                                       // static, at 24 fps
+    ' float bar=smoothstep(.0,.08,fract(uv.y*.5-t*.06))*smoothstep(.2,.1,fract(uv.y*.5-t*.06));',
+    ' float d=length((uv-m)*vec2(r.x/r.y,1.));',
+    ' float clear=smoothstep(.0,.28,d);',                                           // the cursor calms it down
+    ' float v=n*.22*clear+bar*.05+.02;',
+    ' v*=1.-.55*length(uv-.5);',                                                     // vignette
+    ' gl_FragColor=vec4(vec3(v),1.);}'
+  ].join('\n');
+  function s(type, src){ var o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; }
+  var pr = gl.createProgram(); gl.attachShader(pr, s(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, s(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) { document.documentElement.classList.add('nogl'); cv.remove(); return; }
+  gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  var uR = gl.getUniformLocation(pr, 'r'), uT = gl.getUniformLocation(pr, 't'), uM = gl.getUniformLocation(pr, 'm');
+  var mx = .7, my = .5, tx = .7, ty = .5, scale = .5;             // half resolution is plenty for static
+  addEventListener('pointermove', function (e) { tx = e.clientX / innerWidth; ty = 1 - e.clientY / innerHeight; }, { passive: true });
+  function size(){ var w = Math.round(innerWidth * scale), h = Math.round(innerHeight * scale); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } }
+  function pad(v){ return (v < 10 ? '0' : '') + v; }
+  var t0 = performance.now(), running = false;
+  function frame(now){
+    if (document.hidden) { running = false; return; }
+    size(); mx += (tx - mx) * .08; my += (ty - my) * .08;
+    var t = (now - t0) / 1000;
+    gl.viewport(0, 0, cv.width, cv.height);
+    gl.uniform2f(uR, cv.width, cv.height); gl.uniform1f(uT, t); gl.uniform2f(uM, mx, my);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (tc) tc.textContent = '00:00:' + pad(Math.floor(t) % 60) + ':' + pad(Math.floor(t * 24) % 24);
+    if (!reduce) requestAnimationFrame(frame); else running = false;
+  }
+  function go(){ if (!running && !document.hidden) { running = true; requestAnimationFrame(frame); } }
+  document.addEventListener('visibilitychange', go);
+  go();
+})();
+</script>
+</body>
+</html>

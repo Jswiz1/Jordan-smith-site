@@ -106,7 +106,7 @@
 
   /* ---------- soft fades on body copy and supporting blocks ---------- */
   var fadeSel = [
-    'section .eyebrow', 'section .body-lg', 'section p.soft', '.svc li', '.offer', '.caps > div',
+    'section .body-lg', 'section p.soft', '.svc li', '.offer', '.caps > div',
     '.ledger li', '.hobbies li', '#rows .row', '.onset-media', '.portrait', '.sys-tabs', '.au', '.fit'
   ].join(',');
   var fades = [].slice.call(document.querySelectorAll(fadeSel)).filter(function (el) {
@@ -121,6 +121,37 @@
       gsap.to(batch, { autoAlpha: 1, y: 0, duration: M.d.base, stagger: M.stagger, overwrite: true, clearProps: 'transform' });
     }
   });
+  /* ---------- slice reveals: section titles and the marquee open in vertical slices ---------- */
+  // A clip-path polygon made of N columns joined along the bottom edge (the joins have no area),
+  // each column rising from the bottom in turn. Cleared afterwards so nothing stays clipped.
+  function slices(el, n, opts) {
+    opts = opts || {};
+    var tops = []; for (var i = 0; i < n; i++) tops.push(100);
+    function paint() {
+      var pts = [];
+      for (var i = 0; i < n; i++) {
+        var x0 = (i / n * 100).toFixed(3), x1 = ((i + 1) / n * 100 + 0.2).toFixed(3), t = tops[i].toFixed(2);
+        pts.push(x0 + '% 100%', x0 + '% ' + t + '%', x1 + '% ' + t + '%', x1 + '% 100%');
+      }
+      el.style.clipPath = 'polygon(' + pts.join(',') + ')';
+    }
+    paint();
+    var state = tops.map(function (v) { return { v: v }; });
+    gsap.to(state, {
+      v: opts.from || -2, duration: M.d.slow, ease: M.ease,
+      stagger: { each: opts.each || 0.05, from: opts.dir || 'start' },
+      onUpdate: function () { for (var i = 0; i < n; i++) tops[i] = state[i].v; paint(); },
+      onComplete: function () { el.style.clipPath = ''; },
+      scrollTrigger: { trigger: el, start: opts.start || 'top 88%', once: true }
+    });
+  }
+  [].forEach.call(document.querySelectorAll('section .eyebrow'), function (el) {
+    if (el.offsetParent === null || el.closest('.hero, #auRes, #qz, .case, [hidden]')) return;
+    slices(el, small() ? 6 : 10, { each: 0.04 });
+  });
+  var mq = document.querySelector('.marquee');
+  if (mq) slices(mq, small() ? 8 : 16, { each: 0.03, dir: 'center', start: 'top 95%' });
+
   // images and fonts change the page height once loaded: re-measure trigger points then
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 

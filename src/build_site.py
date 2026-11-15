@@ -146,7 +146,8 @@ write('_headers', '''/*
 /crm/*
   Cache-Control: public, max-age=31536000, immutable
 ''')
-write('_redirects', '/*  /index.html  404\n')
+write('_redirects', '/*  /404.html  404\n')
+shutil.copy2(os.path.join(SRC, '404.html'), os.path.join(OUT, '404.html'))
 for d in ('css', 'js', 'media'):
     if os.path.isdir(os.path.join(SRC, d)): shutil.copytree(os.path.join(SRC, d), os.path.join(OUT, d))
 print(f'Built {len(urls)} pages for {DOMAIN} into {OUT}')
