@@ -26,16 +26,16 @@
 
   var PHOTO = img.currentSrc || img.src;
   var DEPTH = PHOTO.replace(/(\.\w+)$/, '-depth$1');
-  var FOCUS = [0.43, 0.58];                 // where the subject sits in the photo (x, y from top-left)
+  var FOCUS = [0.74, 0.5];                 // where the subject sits in the photo (x, y from top-left)
 
   var phone = matchMedia('(pointer: coarse)').matches || window.innerWidth < 700;
   var P = {
     sim: phone ? 64 : 128,          // velocity grid (shortest side)
     dye: phone ? 256 : 512,         // reveal mask resolution
     iters: phone ? 12 : 20,         // pressure solve iterations
-    curl: phone ? 0 : 16,           // vorticity (swirl) strength; off on phones
+    curl: phone ? 0 : 8,            // vorticity (swirl) strength; off on phones
     velDiss: 0.4, dyeDiss: 1.6,    // how quickly motion and colour fade
-    radius: phone ? 0.0045 : 0.0022,
+    radius: phone ? 0.006 : 0.0032,
     force: 5200,
     depth: phone ? 0.02 : 0.032,    // parallax strength
     dpr: Math.min(window.devicePixelRatio || 1, phone ? 1.25 : 1.5)
@@ -131,9 +131,9 @@
       ' uv += uOffset * (d - .5) * uDepthAmt;' +                       // nearer pixels move further: depth parallax
       ' uv += texture2D(uVel, vUv).xy * .00003;' +                     // the fluid gently bends the image
       ' vec3 c = texture2D(uPhoto, uv).rgb;' +
-      ' float g = dot(c, vec3(.299, .587, .114)); g = clamp((g - .5) * 1.12 + .5, 0., 1.) * .62;' + // matches the fallback img grade
-      ' float m = smoothstep(.03, .55, texture2D(uDye, vUv).r) * uReady;' +
-      ' vec3 col = mix(vec3(g), c * .9, m);' +
+      ' float l = dot(c, vec3(.299, .587, .114)); float g = clamp((l - .5) * 1.12 + .5, 0., 1.) * .8;' + // matches the fallback img grade
+      ' float m = smoothstep(.0, .4, texture2D(uDye, vUv).r) * uReady;' +
+      ' vec3 col = mix(vec3(g), clamp(c * (g / max(l, .002)), 0., 1.), m);' +   // colour arrives at the same brightness, so only the saturation changes
       ' gl_FragColor = vec4(col, 1.); }'
   };
 
@@ -210,7 +210,7 @@
   function tex(pg, name, t) { gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t); gl.uniform1i(pg.u[name], unit); unit++; }
 
   /* ---------- photo + depth ---------- */
-  var photo = null, depth = null, imgAspect = 1100 / 1650;
+  var photo = null, depth = null, imgAspect = 2400 / 1350;
   function loadTex(src, cb) {
     var im = new Image();
     im.decoding = 'async';
