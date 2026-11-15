@@ -411,7 +411,15 @@
     var i = +c.dataset.i;
     if (i === Math.round(pos)) openCase(P[i].id, c); else scrollToCard(i);
   });
-  document.getElementById('openCase').addEventListener('click', function(){ var i = Math.round(pos); openCase(P[i].id, cards[i]); });
+  document.getElementById('openCase').addEventListener('click', function(){ var i = Math.round(pos); openCase(P[i].id, cards[i], window.WorkGL && WorkGL.rect(i)); });
+  // read by work-gl.js, which draws the cards in WebGL on top of this same layout
+  window.WorkCarousel = {
+    state: function(){ return { pos: pos, target: target, W: W, R: R, STEP: STEP, n: P.length, persp: parseFloat(stage.style.perspective) || 1000 }; },
+    projects: P,
+    open: function(i, rect){ openCase(P[i].id, cards[i], rect); },
+    goTo: scrollToCard,
+    progressToY: function(k){ var top = work.getBoundingClientRect().top + window.scrollY, span = work.offsetHeight - VH(); return top + span * Math.max(0, Math.min(1, k)); }
+  };
 
   /* ---------- case overlay with FLIP ---------- */
   var caseEl = document.getElementById('case'), lastFocus = null;
@@ -469,10 +477,24 @@
     if (head && !reduce) { head.style.transform = 'translateY(105%)'; requestAnimationFrame(function(){ requestAnimationFrame(function(){ head.style.transition = 'transform var(--d-slow) var(--ease)'; head.style.transform = 'none'; }); }); }
     var c = caseEl.querySelector('.close'); if (c) c.focus({preventScroll:true});
   }
-  function openCase(id, fromEl){
+  function openCase(id, fromEl, rect){
     fillCase(id);
     if (!fromEl || reduce || !caseEl.hidden) { showCase(true); return; }
-    var r = fromEl.getBoundingClientRect();
+    var r = rect || fromEl.getBoundingClientRect();
+    var pj = null; for (var q=0;q<P.length;q++) if (P[q].id===id) pj = P[q];
+    if (window.gsap && window.Flip && pj && pj.img) {
+      // the project image itself grows to fill the screen, then the case study fades up over it
+      var fx = document.createElement('div'); fx.className = 'flip flip-img';
+      fx.style.backgroundImage = 'url("'+pj.img+'")';
+      fx.style.left = r.left+'px'; fx.style.top = r.top+'px'; fx.style.width = r.width+'px'; fx.style.height = r.height+'px';
+      document.body.appendChild(fx);
+      var st = Flip.getState(fx);
+      fx.style.left = '0px'; fx.style.top = '0px'; fx.style.width = '100vw'; fx.style.height = '100vh';
+      Flip.from(st, { duration: window.Motion ? Motion.d.base : .9, ease: 'expo.out', onComplete: function(){
+        showCase(false); gsap.to(fx, { autoAlpha: 0, duration: .35, delay: .05, onComplete: function(){ fx.remove(); } });
+      }});
+      return;
+    }
     var f = document.createElement('div'); f.className = 'flip';
     f.style.left = r.left+'px'; f.style.top = r.top+'px'; f.style.width = r.width+'px'; f.style.height = r.height+'px';
     document.body.appendChild(f);

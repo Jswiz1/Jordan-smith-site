@@ -16,6 +16,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
   if (window.SplitText) gsap.registerPlugin(SplitText);
+  if (window.Flip) gsap.registerPlugin(Flip);
   gsap.defaults({ ease: M.ease, duration: M.d.base });
 
   /* ---------- smooth scroll ---------- */
@@ -65,6 +66,8 @@
       idle = setTimeout(function () {
         var cards = document.querySelectorAll('#ring .card').length;
         if (cards < 2 || lenis.isStopped) return;
+        var stg = document.getElementById('stage');
+        if (stg && stg.classList.contains('dragging')) return; // the drag does its own settling
         var top = work.getBoundingClientRect().top + window.scrollY;
         var span = work.offsetHeight - window.innerHeight;
         var y = window.scrollY, k = (y - top) / span;

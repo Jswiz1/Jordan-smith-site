@@ -834,3 +834,11 @@ html.has-lenis{scroll-snap-type:none}
 /* masked line reveals: SplitText wraps each line in a clipping mask */
 .split-mask{overflow:clip;padding-bottom:.06em;margin-bottom:-.06em}
 .split-line{display:block}
+
+/* ---------- selected work in WebGL (work-gl.js); the DOM cards stay as the fallback ---------- */
+.stage canvas.work-gl{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;opacity:0;transition:opacity var(--d-base) var(--ease)}
+.stage.gl canvas.work-gl{opacity:1}
+.stage.gl .ring{visibility:hidden}
+.stage.gl{cursor:grab;touch-action:pan-y}
+.stage.gl.dragging{cursor:grabbing}
+.flip.flip-img{background-size:cover;background-position:center;border:0;transition:none}
