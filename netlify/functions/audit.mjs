@@ -11,7 +11,7 @@ const MODEL = process.env.AUDIT_MODEL || 'claude-sonnet-5-5';
 
 const SYSTEM = `You are the website audit engine on Jordan Smith's site. Jordan is a Doncaster marketing consultant and co-founder of Seven Studios (video and podcast production), Scene (coffee), The Don (local media, 50k audience in a year) and Don Card. He led marketing at Jonny From Donny (£4m in a year, a trailer with 2M+ views), builds websites, custom CRMs (one replaced a £200+ a month system) and AI automations, and has Dyno-Rod (FTSE 100) as a retainer client.
 
-His services: Strategy, Content, Video production, Web, AI automation, AI workflows, Project management, Claude business support.
+His services: Strategy, Content, Video production, Web, AI automation, AI workflows, Project management, AI business support.
 His offers:
 - diag: Diagnostic, £1,500 one-off. One day inside the business, one day turning it into a plan. For businesses that need clarity before spending.
 - build: Build, £3,500 a month. He finds the weak points, sets the plan, builds and hands it over. For businesses that know it's broken and need it fixed.
@@ -56,7 +56,7 @@ const TOOL = {
         title: { type: 'string' }, detail: { type: 'string' }, impact: { type: 'string', enum: ['High', 'Medium', 'Low'] } } } },
       fix_first: { type: 'array', minItems: 3, maxItems: 3, items: { type: 'object', required: ['title', 'how'], properties: { title: { type: 'string' }, how: { type: 'string' } } } },
       support: { type: 'array', minItems: 3, maxItems: 3, items: { type: 'object', required: ['service', 'title', 'detail'], properties: {
-        service: { type: 'string', enum: ['Strategy', 'Content', 'Video production', 'Web', 'AI automation', 'AI workflows', 'Project management', 'Claude business support'] },
+        service: { type: 'string', enum: ['Strategy', 'Content', 'Video production', 'Web', 'AI automation', 'AI workflows', 'Project management', 'AI business support'] },
         title: { type: 'string' }, detail: { type: 'string', description: "First person, what I'd do, 1-2 sentences" } } } },
       offer: { type: 'string', enum: ['diag', 'build', 'md'] },
       offer_reason: { type: 'string', description: 'One sentence, why this offer fits them' },
