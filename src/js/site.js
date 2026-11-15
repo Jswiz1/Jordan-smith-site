@@ -267,6 +267,7 @@
         feats:[['Brain dump','talk or type, and AI files it'],['Email triage','summaries, next steps and drafted replies'],['Two businesses, one system','The Don and Don Card, access set per person'],['Sponsor renewals','flagged before they run out'],['Shopify sync','members and retailers update themselves'],['AI writes','lead proposals and filming scripts'],['Live for everyone','every change shows instantly, with full history'],['Team streaks','a daily habit, not another chore']] },
       seven: { title:'Seven Studios Board', phone:'crm/seven-mobile-dark.jpg', shots:[
         ['seven-home-dark','Home','The day ahead: calendar, the next shoot countdown, and what the AI suggests.'],
+        ['seven-planner-dark','90-day plan','Three goals, thirteen weeks, a weekly focus and every step ticked off in one grid.'],
         ['seven-dashboard-dark','KPIs','Weekly wins and KPIs that track themselves.'],
         ['seven-leads-dark','Leads','The pipeline with values per stage, chase flags and quotes started in Xero.'],
         ['seven-podcasts-dark','Podcasts','Bookings synced from Acuity, through recording, edit and delivery.'],
