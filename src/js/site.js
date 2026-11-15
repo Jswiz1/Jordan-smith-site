@@ -363,11 +363,13 @@
       '<div class="foot mono"><span>'+esc(p.type)+'</span><span>View →</span></div></div>';
   }).join('');
   var cards = [].slice.call(ring.children);
-  var pos = 0, target = 0, W = 700, R = 1800, STEP = 0.42, shown = -1, PER = 0.75;
+  var pos = 0, target = 0, W = 700, R = 1800, STEP = 0.42, shown = -1, PER = 0.75, AR = 1.6;
   function measure(){
     var vw = root.clientWidth, sh = stage.clientHeight || VH()*0.55;
     PER = vw < 700 ? 0.34 : 0.75;
-    W = Math.min(vw * (vw < 700 ? 0.8 : 0.52), 820, sh * 0.9 * 16/10);
+    AR = vw < 700 ? 0.8 : 1.6;
+    W = Math.min(vw * (vw < 700 ? 0.74 : 0.52), 820, sh * 0.92 * AR);
+    ring.style.setProperty('--ar', AR);
     R = W * 1.06 / Math.sin(STEP);
     ring.style.setProperty('--cw', W+'px');
     stage.style.perspective = Math.max(W*1.5, 700)+'px';
@@ -379,7 +381,7 @@
     [].forEach.call(marks, function(m, i){ m.style.top = (span * i / (P.length-1)) + 'px'; });
   }
   function layoutCards(){
-    var H = W*10/16;
+    var H = W/AR;
     cards.forEach(function(c,i){
       var d = i - pos, phi = d*STEP;
       if (Math.abs(d) > 3.2) { c.style.visibility = 'hidden'; return; }
@@ -422,7 +424,7 @@
   });
   // read by work-gl.js, which draws the cards in WebGL on top of this same layout
   window.WorkCarousel = {
-    state: function(){ return { pos: pos, target: target, W: W, R: R, STEP: STEP, n: P.length, persp: parseFloat(stage.style.perspective) || 1000 }; },
+    state: function(){ return { pos: pos, target: target, W: W, AR: AR, R: R, STEP: STEP, n: P.length, persp: parseFloat(stage.style.perspective) || 1000 }; },
     projects: P,
     open: function(i, rect){ openCase(P[i].id, cards[i], rect); },
     goTo: scrollToCard,
@@ -1246,5 +1248,19 @@
   function start(){ if(!t && !rm) t=setInterval(function(){ show((i+1)%imgs.length); },3800); }
   function stop(){ clearInterval(t); t=null; }
   if('IntersectionObserver' in window) new IntersectionObserver(function(e){ e[0].isIntersecting?start():stop(); }).observe(fig); else start();
+})();
+
+/* header steps out of the way while reading, comes back on scroll up */
+(function(){
+  var top=document.querySelector('.top'); if(!top) return;
+  var last=window.scrollY, acc=0;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, d=y-last; last=y;
+    if(document.body.classList.contains('locked')) return;
+    if(y<160){ top.classList.remove('away'); acc=0; return; }
+    acc = (d>0)===(acc>0) ? acc+d : d;
+    if(acc>24) top.classList.add('away'); else if(acc<-24) top.classList.remove('away');
+  },{passive:true});
+  top.addEventListener('focusin',function(){ top.classList.remove('away'); });
 })();
 

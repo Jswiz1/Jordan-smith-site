@@ -29,7 +29,7 @@
     <nav class="nav" aria-label="Main">
       <a class="link mono" href="#systems">Systems</a>
       <a class="link mono" href="#work">Work</a>
-      <a class="link mono" href="#brands">Brands</a>
+      <a class="link mono" href="#consulting">Pricing</a>
       <a class="link mono" href="#audit">Audit</a>
       <a class="link mono" href="#about">About</a>
       <a class="talk mono" href="#contact">Let's talk</a>
@@ -54,6 +54,10 @@
       <div class="hero-foot">
         <p>Websites, AI automation, custom CRMs and video, made in-house. Co-founder of Seven Studios, Scene, The Don and Don Card. Based in Doncaster, working across the UK.</p>
         <div class="hero-actions">
+          <div class="hero-ctas">
+            <a class="btn-solid" href="#contact" data-cursor="Talk">Book a call</a>
+            <a class="btn-line" href="#audit" data-cursor="Audit">Audit my site</a>
+          </div>
           <a class="play-film" href="https://www.youtube.com/watch?v=TOolYaw_t9w" target="_blank" rel="noopener" data-cursor="Play">
             <span class="pf-dot" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 22 22"><path d="M7 4l12 7-12 7z" fill="currentColor"/></svg></span>
             <span class="pf-text"><b>Watch the trailer</b><span class="mono">Jonny From Donny · 2M+ views</span></span>
@@ -64,16 +68,16 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee dark" aria-hidden="true"><div class="track" id="track"></div></div>
+  <div id="track" hidden></div>
 
   <!-- PROOF -->
-  <div class="proof dark" aria-label="Results">
+  <div class="proof dark" aria-label="Built so far">
     <div class="wrap">
-      <div class="stat"><b data-count="4" data-pre="£" data-suf="m">£4m</b><span class="mono">Jonny from Donny · sales in a year</span></div>
-      <div class="stat"><b data-count="50" data-suf="k">50k</b><span class="mono">The Don · followers</span></div>
-      <div class="stat"><b data-count="90" data-suf="+">90+</b><span class="mono">Don Card · venues</span></div>
-      <div class="stat"><b data-count="2" data-suf="M+">2M+</b><span class="mono">Views · one Jonny from Donny trailer</span></div>
+      <div class="stat"><b data-count="5" data-suf="+">5+</b><span class="mono">Websites built and live</span></div>
+      <div class="stat"><b data-count="3">3</b><span class="mono">Custom CRMs running businesses</span></div>
+      <div class="stat"><b data-count="50" data-suf="k">50k</b><span class="mono">Audience built for The Don</span></div>
+      <div class="stat"><b data-count="2" data-suf="M+">2M+</b><span class="mono">Views on one film I produced</span></div>
+      <div class="worked mono"><span>Worked with</span><ul><li>Dyno-Rod · British Gas</li><li>OXEN Sports</li><li>Doncaster Racecourse</li><li>Paul Gascoigne</li><li>Iconic Hospitality</li><li>Jonny From Donny</li></ul></div>
     </div>
   </div>
 
@@ -84,7 +88,7 @@
       <h2 class="lede lit">I build websites, custom CRMs and <em>AI integrations.</em></h2>
       <div class="caps">
         <div><span class="mono">01 · Websites</span><p>Shopify rebuilds, client onboarding one-pagers, application funnels and custom link-in-bio pages.</p></div>
-        <div><span class="mono">02 · Custom CRMs</span><p>Built around how the team actually works, not the other way round. Live at The Don and Seven Studios.</p></div>
+        <div><span class="mono">02 · Custom CRMs</span><p>Built around how the team actually works, not the other way round. Live at Seven Studios, The Don and Scene.</p></div>
         <div><span class="mono">03 · AI integrations</span><p>Practical automation, like a pipeline that cuts long podcasts into branded clips. Currently in testing.</p></div>
       </div>
 
@@ -184,7 +188,7 @@
   <!-- WORK: pinned, scroll-driven -->
   <section id="work" class="dark" aria-label="Work">
     <div class="pin">
-      <div class="wrap pin-head"><div class="eyebrow mono"><span>Selected work</span><span>Scroll to move · click to open</span></div></div>
+      <div class="wrap pin-head"><div class="eyebrow mono"><span>Selected work</span><span class="hint-fine">Scroll to move · click to open</span><span class="hint-touch">Swipe to move · tap to open</span></div></div>
       <div class="stage" id="stage" aria-roledescription="carousel" aria-label="Selected projects"><div class="ring" id="ring"></div></div>
       <div class="wrap pin-foot">
         <div class="now" aria-live="polite">
@@ -198,13 +202,7 @@
     </div>
   </section>
 
-  <div class="dark">
-    <div class="wrap all">
-      <div class="eyebrow mono"><span>All work</span><span>06</span></div>
-      <div id="rows"></div>
-      
-    </div>
-  </div>
+  <div id="rows" hidden></div>
 
   <!-- AI AUTOMATION -->
   <section id="ai" class="dark ai" aria-label="AI automation">
@@ -271,81 +269,6 @@
     </div>
   </section>
 
-  <!-- BRANDS -->
-  <section id="brands" class="light brands" aria-label="Brands I've built">
-    <div class="wrap block">
-      <div class="eyebrow mono"><span>Brands I've built</span><span>Co-founder</span></div>
-      <h2 class="lede lit">I don't just advise. I build and run <em>my own.</em></h2>
-      <div class="brand-grid">
-        <button type="button" class="brand-tile" data-case="seven" data-cursor="Open">
-          <span class="bt-img"><img src="seven-studios.jpg" alt="" loading="lazy"></span>
-          <span class="bt-meta"><b>Seven Studios</b><span>Podcast and video production studio</span></span>
-        </button>
-        <button type="button" class="brand-tile" data-case="scene" data-cursor="Open">
-          <span class="bt-img"><img src="scene.jpg" alt="" loading="lazy"></span>
-          <span class="bt-meta"><b>Scene</b><span>Specialty coffee, Doncaster</span></span>
-        </button>
-        <button type="button" class="brand-tile" data-case="don" data-cursor="Open">
-          <span class="bt-img"><img src="the-don.jpg" alt="" loading="lazy"></span>
-          <span class="bt-meta"><b>The Don</b><span>Doncaster's media platform · 50k audience in a year</span></span>
-        </button>
-        <button type="button" class="brand-tile" data-case="doncard" data-cursor="Open">
-          <span class="bt-img"><img src="don-card.jpg" alt="" loading="lazy"></span>
-          <span class="bt-meta"><b>Don Card</b><span>Digital discount card · 90+ venues</span></span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- PURPLE COW -->
-  <section class="cowsec dark" id="cowsec" aria-label="Philosophy">
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-      <symbol id="cow" viewBox="0 0 120 80">
-        <path d="M24 30c0-8 6-12 14-12h40c9 0 15 5 17 11l5 1c3-6 9-9 14-7 3 1 4 4 3 7l-1 5c0 3-2 6-5 7l-5 2c-2 1-4 3-5 5-2 4-6 6-10 6H40c-10 0-16-6-16-14z"/>
-        <path d="M30 46h7v26c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5zM42 48h7v24c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5zM78 48h7v24c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5zM89 46h7v26c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5z"/>
-        <ellipse cx="64" cy="53" rx="7" ry="4.5"/>
-        <path d="M105 22c-1-3 0-6 2-7M112 22c1-3 3-5 6-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-        <ellipse cx="101" cy="26" rx="5" ry="2.6" transform="rotate(-20 101 26)"/>
-        <path d="M25 26c-6 2-8 8-8 16 0 4-1 8-3 10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-        <circle cx="13.5" cy="53" r="3.2"/>
-      </symbol>
-    </svg>
-    <div class="wrap block">
-      <div class="eyebrow mono"><span>How I think</span><span>Be remarkable</span></div>
-      <blockquote class="cowq">
-        <p class="lede">“In a crowded marketplace, fitting in is <em>failing.</em>”</p>
-        <footer class="mono">Seth Godin · <cite>Purple Cow</cite></footer>
-      </blockquote>
-      <div class="herd" aria-hidden="true">
-        <svg class="cow" viewBox="0 0 120 80" style="--d:154ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:49ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:548ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:596ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:519ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:88ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:71ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:564ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:846ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:228ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:596ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:590ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:50ms"><use href="#cow"/></svg>
-        <svg class="cow purple" viewBox="0 0 120 80" style="--d:47ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:136ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:147ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:584ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:835ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:105ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:654ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:99ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:64ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:633ms"><use href="#cow"/></svg>
-        <svg class="cow" viewBox="0 0 120 80" style="--d:696ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
-      </div>
-      <p class="cow-line">Nobody stops for a brown cow. My job is to make your business the purple one.</p>
-    </div>
-  </section>
-
   <!-- CONSULTING -->
   <section id="consulting" class="light" aria-label="Consulting">
     <div class="wrap block">
@@ -363,6 +286,14 @@
         <li><span class="mono">07</span><b>Project management</b><span>Launches and builds run from start to finish</span></li>
         <li><span class="mono">08</span><b>AI business support</b><span>Setting your team up to work with AI day to day</span></li>
       </ul>
+      <div class="hiw">
+        <div class="svc-head mono">How it starts</div>
+        <ol>
+          <li><span class="mono">01</span><b>A call</b><p>Twenty minutes, free. Tell me what's stuck and I'll tell you straight if I can help.</p></li>
+          <li><span class="mono">02</span><b>The diagnostic</b><p>Two days inside the business. You leave with a plan, whatever you decide next.</p></li>
+          <li><span class="mono">03</span><b>The build</b><p>I make it, set it running and hand it over to your team.</p></li>
+        </ol>
+      </div>
       <div class="offers">
         <div class="offer"><span class="mono">Two days · one-off</span><h3>Diagnostic</h3><p>One day inside your business, seeing how it really runs. One day turning that into a clear plan for your marketing, systems and flow. The plan is yours to keep, whatever you do next.</p><span class="offer-price">£1,500</span></div>
         <div class="offer"><span class="mono">Monthly · hands-on</span><h3>Build</h3><p>I find the issues and weak points, set the plan and strategy, then deliver it. New projects built, implemented and handed over to your team, ready to run.</p><span class="offer-price">£3,500<small>/ month</small></span></div>
@@ -372,6 +303,7 @@
         <div><span class="mono">Good fit</span><p>Founders and established businesses in hospitality, retail, media, automotive and premium services who've outgrown doing it piecemeal.</p></div>
         <div><span class="mono">Not a fit</span><p>Daily posting, one-off logos, or briefs that end in "make it pop". There are great people for that. I'm not one of them.</p></div>
       </div>
+      <div class="cons-cta"><a class="btn-dark" href="#contact" data-cursor="Talk">Book a call</a><a class="btn-dark-line" href="#audit" data-cursor="Audit">Or audit my site first</a></div>
     </div>
   </section>
 
@@ -538,6 +470,55 @@
     </div>
   </section>
 
+  <!-- PURPLE COW -->
+  <section class="cowsec dark" id="cowsec" aria-label="Philosophy">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="cow" viewBox="0 0 120 80">
+        <path d="M24 30c0-8 6-12 14-12h40c9 0 15 5 17 11l5 1c3-6 9-9 14-7 3 1 4 4 3 7l-1 5c0 3-2 6-5 7l-5 2c-2 1-4 3-5 5-2 4-6 6-10 6H40c-10 0-16-6-16-14z"/>
+        <path d="M30 46h7v26c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5zM42 48h7v24c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5zM78 48h7v24c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5zM89 46h7v26c0 1.5-1 2.5-2.5 2.5h-2c-1.5 0-2.5-1-2.5-2.5z"/>
+        <ellipse cx="64" cy="53" rx="7" ry="4.5"/>
+        <path d="M105 22c-1-3 0-6 2-7M112 22c1-3 3-5 6-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        <ellipse cx="101" cy="26" rx="5" ry="2.6" transform="rotate(-20 101 26)"/>
+        <path d="M25 26c-6 2-8 8-8 16 0 4-1 8-3 10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="13.5" cy="53" r="3.2"/>
+      </symbol>
+    </svg>
+    <div class="wrap block">
+      <div class="eyebrow mono"><span>How I think</span><span>Be remarkable</span></div>
+      <blockquote class="cowq">
+        <p class="lede">“In a crowded marketplace, fitting in is <em>failing.</em>”</p>
+        <footer class="mono">Seth Godin · <cite>Purple Cow</cite></footer>
+      </blockquote>
+      <div class="herd" aria-hidden="true">
+        <svg class="cow" viewBox="0 0 120 80" style="--d:154ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:49ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:548ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:596ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:519ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:88ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:71ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:564ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:846ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:228ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:596ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:590ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:50ms"><use href="#cow"/></svg>
+        <svg class="cow purple" viewBox="0 0 120 80" style="--d:47ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:136ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:147ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:584ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:835ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:105ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:654ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:99ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:64ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:633ms"><use href="#cow"/></svg>
+        <svg class="cow" viewBox="0 0 120 80" style="--d:696ms"><use href="#cow" transform="translate(120 0) scale(-1 1)"/></svg>
+      </div>
+      <p class="cow-line">Nobody stops for a brown cow. My job is to make your business the purple one.</p>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about" class="light" aria-label="About">
     <div class="wrap block" style="padding-top:0">
@@ -672,7 +653,7 @@
   <div class="wrap">
     <a href="#systems" data-close>Systems</a>
     <a href="#work" data-close>Work</a>
-    <a href="#brands" data-close>Brands</a>
+    <a href="#consulting" data-close>Pricing</a>
     <a href="#consulting" data-close>Work with me</a>
     <a href="#audit" data-close>Free audit</a>
     <a href="#about" data-close>About</a>

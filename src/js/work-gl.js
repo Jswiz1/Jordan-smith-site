@@ -108,7 +108,7 @@
   function rect(i) {
     var st = C.state(), d = i - st.pos, R = bentR(st), half = (st.W / 2) / R;
     var a = project(st, d * st.STEP - half), b = project(st, d * st.STEP + half), m = project(st, d * st.STEP);
-    var H = st.W * 10 / 16, r = stage.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    var H = st.W / (st.AR || 1.6), r = stage.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
     var l = cx + a.x * a.s, rr = cx + b.x * b.s, h = H * m.s;
     return { left: l, top: cy - h / 2, width: rr - l, height: h };
   }
@@ -124,7 +124,7 @@
   function draw() {
     if (!started || lost) return;
     resize();
-    var st = C.state(), R = bentR(st), H = st.W * 10 / 16, cardAR = 16 / 10;
+    var st = C.state(), R = bentR(st), H = st.W / (st.AR || 1.6), cardAR = st.AR || 1.6;
     gl.viewport(0, 0, cv.width, cv.height);
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(U.uW, st.W); gl.uniform1f(U.uH, H); gl.uniform1f(U.uR, R);
