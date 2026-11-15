@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://smithjordan.netlify.app/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://smithjordan.netlify.app/work/seven/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smithjordan.netlify.app/work/scene/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smithjordan.netlify.app/work/don/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smithjordan.netlify.app/work/doncard/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smithjordan.netlify.app/work/jonny/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smithjordan.netlify.app/work/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>
